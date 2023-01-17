@@ -1,0 +1,5 @@
+docopt-ng
+imgur_python
+natsort
+tqdm
+xdg
