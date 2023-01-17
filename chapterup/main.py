@@ -9,7 +9,8 @@ Parameters:
     <album_name>                The name of the album to create.
 
 Options:
-    -a --access-token=<token>   The access token to use for Imgur.
+    -a --access-token=<token>   The access token to use for Imgur. Note: This will be saved to the config file,
+                                so you only need to provide it once (unless you want to change it).
     -p --public                 Make the album public. They're private by default.
     -c --show-config-path            Show the path to the configuration file.
     -h --help                   Show this screen.
@@ -18,6 +19,8 @@ Options:
 
 
 import json
+import os
+import platform
 import sys
 from dataclasses import dataclass, asdict
 from pathlib import Path
@@ -33,9 +36,14 @@ from chapterup import __version__
 
 def get_config_path() -> Path:
     """
-    Get the path to the configuration file for Linux.
+    Get the path to the configuration file for both Linux and Windows.
     """
-    return Path(XDG_CONFIG_HOME, "chapterup" + "rc")
+    if platform.system() == "Linux":
+        return Path(XDG_CONFIG_HOME, "chapterup" + "rc")
+    elif platform.system() == "Windows":
+        return Path(os.getenv("APPDATA"), "chapterup", "config.ini")
+    else:  # ???
+        raise NotImplementedError("Your OS is currently not supported.")
 
 
 @dataclass
