@@ -24,15 +24,15 @@ Follow this official guide by imgur to get one: https://apidocs.imgur.com
 ## Example usage
 
 ```
-$ chapterup test_images Demonstration 
-The following test_images will be uploaded in order:
+$ chapterup images Demonstration 
+The following images will be uploaded in order:
 image0.png
 image1.png
 image2.png
 image3.png
 image4.png
 
-Found 5 test_images.
+Found 5 images.
 Do you want to continue? [y/N] > y
 100%|██████████| 5/5 [00:06<00:00,  1.33s/it]
 --------------------------------------------------

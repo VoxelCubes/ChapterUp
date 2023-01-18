@@ -5,7 +5,7 @@ Usage:
     chapterup [--help | --version | --show-config-path]
 
 Parameters:
-    <dir_path>                  The path to the directory containing the test_images.
+    <dir_path>                  The path to the directory containing the images.
     <album_name>                The name of the album to create.
 
 Options:
@@ -158,14 +158,14 @@ def main():
 
     image_paths = get_image_paths(dir_path)
     if not image_paths:
-        print("Error: The given directory does not contain any test_images.")
+        print("Error: The given directory does not contain any images.")
         sys.exit(1)
 
     # Show the paths and ask for confirmation before uploading.
-    print("The following test_images will be uploaded in order:")
+    print("The following images will be uploaded in order:")
     for path in image_paths:
         print(path.name)
-    print(f"\nFound {len(image_paths)} test_images.")
+    print(f"\nFound {len(image_paths)} images.")
     if not get_confirmation("Do you want to continue?", default=False):
         print("Aborting.")
         sys.exit(0)
